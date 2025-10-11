@@ -4,6 +4,7 @@ import useApps from '../Hooks/useApps';
 import DownloadIcon from '../assets/icon-downloads.png';
 import AvgRatingIcon from '../assets/icon-ratings.png';
 import ReviewsIcon from '../assets/icon-review.png';
+import { ToastContainer, toast } from 'react-toastify';
 
 const AppDetails = () => {
   const { id } = useParams();
@@ -22,14 +23,14 @@ const AppDetails = () => {
     reviews,
     ratingAvg,
     downloads,
-  } = app;
+  } = app || {};
 
   const handelAddToInstallation = () => {
     const existingApps = JSON.parse(localStorage.getItem('installed'));
     let updatedApps = [];
     if (existingApps) {
       const isDuplicate = existingApps.some(a => a.id === app.id);
-      if (isDuplicate) return alert('Sorry Bhai');
+      if (isDuplicate) return toast.warning('Already installed!');
       updatedApps = [...existingApps, app];
     } else {
       updatedApps.push(app);
@@ -95,6 +96,7 @@ const AppDetails = () => {
 
         <p className="text-gray-500">{description}</p>
       </div>
+      <ToastContainer></ToastContainer>
     </section>
   );
 };

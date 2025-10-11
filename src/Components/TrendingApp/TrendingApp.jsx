@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 const TrendingApp = ({ app }) => {
   return (
-    <Link to={`./app/${app.id}`}>
+    <Link to={`./apps/${app.id}`}>
       <div className="card bg-base-100 shadow-sm p-4 cursor-pointer">
         <figure className="rounded-lg ">
           <img src={`${app.image}`} alt={`${app.title}`} />
