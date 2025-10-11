@@ -4,6 +4,7 @@ import Counter from '../Components/Counter/Counter';
 import TrendingApp from '../Components/TrendingApp/TrendingApp';
 import { Link, useLoaderData } from 'react-router';
 import useApps from '../Hooks/useApps';
+import Loading from '../Components/Loading/Loading';
 
 const Home = () => {
   const { apps, loading, error } = useApps();

@@ -5,6 +5,7 @@ import Apps from '../Pages/Apps';
 import Installation from '../Pages/Installation';
 import AppDetails from '../Pages/AppDetails';
 import ErrorPage from '../Components/Error/ErrorPage';
+import Loading from '../Components/Loading/Loading';
 
 const router = createBrowserRouter([
   {
