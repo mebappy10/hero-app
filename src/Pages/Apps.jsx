@@ -10,7 +10,6 @@ const Apps = () => {
   const searchedApps = term
     ? apps.filter(app => app.title.toLocaleLowerCase().includes(term))
     : apps;
-  console.log(searchedApps);
 
   return (
     <>
