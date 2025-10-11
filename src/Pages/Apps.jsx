@@ -5,6 +5,12 @@ import AllApps from '../Components/AllApps/AllApps';
 
 const Apps = () => {
   const { apps, loading, error } = useApps();
+  const [search, setSearch] = useState('');
+  const term = search.trim().toLocaleLowerCase();
+  const searchedApps = term
+    ? apps.filter(app => app.title.toLocaleLowerCase().includes(term))
+    : apps;
+  console.log(searchedApps);
 
   return (
     <>
@@ -21,19 +27,25 @@ const Apps = () => {
         <div>
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-[#001931] text-lg font-semibold">
-              ({apps.length}) Apps Found
+              ({searchedApps.length}) Apps Found
             </h2>
             <div>
               <label className="input">
                 <IoSearch className="text-lg text-[#8A949D]" />
-                <input type="search" required placeholder="Search" />
+                <input
+                  value={search}
+                  onChange={e => setSearch(e.target.value)}
+                  type="search"
+                  required
+                  placeholder="Search"
+                />
               </label>
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-4 gap-4 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-2 max-xl:grid-cols-3">
-          {apps.map(app => (
+          {searchedApps.map(app => (
             <AllApps key={app.id} app={app}></AllApps>
           ))}
         </div>
