@@ -24,9 +24,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: '/app/',
-  },
 ]);
 
 export default router;
